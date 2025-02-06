@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 
@@ -7,20 +7,27 @@ import { map } from 'rxjs';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  BASE_URL: string = 'http://ec2-44-203-232-64.compute-1.amazonaws.com:8080/';
+  BASE_URL: string = 'http://ec2-98-84-34-5.compute-1.amazonaws.com:8080';
+
+
   
-  login(email: string, password: string) {
-    return this.http.post<any>(`${this.BASE_URL}/api/jwt/login`, {
+    private headers = new HttpHeaders({
+      // Authorization: `Bearer ${sessionStorage.getItem('TOKEN')}`,
+      Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+      Origin: 'https://santhoshkumarpv002.github.io/',
+    });
+
+    login(email: string, password: string) {
+      return this.http.post<any>(`${this.BASE_URL}/api/jwt/login`, {
         email: email,
         password: password,
-      }, { observe: 'response' }) // Observe the full response
-      .pipe(
+      }, {
+        headers: this.headers,
+        observe: 'response' // Observe the full response
+      }).pipe(
         map((response: HttpResponse<any>) => {
           const token = response.headers.get('authorization')?.replace('Bearer ', '');
           if (token) {
-            // sessionStorage.setItem('AUTHENTICATED_USER', email);
-            // sessionStorage.setItem('TOKEN', token);
-            
             localStorage.setItem('AUTHENTICATED_USER', email);
             localStorage.setItem('TOKEN', token);
             console.log('Token stored in session storage.');
@@ -30,28 +37,59 @@ export class AuthService {
           return response.body; // Return the actual response body
         })
       );
-  }
+    }
+
+
+  
+  // login(email: string, password: string) {
+  //   return this.http.post<any>(`${this.BASE_URL}/api/jwt/login`, {
+  //       email: email,
+  //       password: password,
+  //     }, { observe: 'response' },) // Observe the full response
+  //     .pipe(
+  //       map((response: HttpResponse<any>) => {
+  //         const token = response.headers.get('authorization')?.replace('Bearer ', '');
+  //         if (token) {
+  //           // sessionStorage.setItem('AUTHENTICATED_USER', email);
+  //           // sessionStorage.setItem('TOKEN', token);
+            
+  //           localStorage.setItem('AUTHENTICATED_USER', email);
+  //           localStorage.setItem('TOKEN', token);
+  //           console.log('Token stored in session storage.');
+  //         } else {
+  //           console.error('Token is null or undefined.');
+  //         }
+  //         return response.body; // Return the actual response body
+  //       })
+  //     );
+  // }
   
   
 
 
   forgotPassword(email: string) {
     return this.http.get<string>(
-      `${this.BASE_URL}/api/jwt/forgot/${email}`
+      `${this.BASE_URL}/api/jwt/forgot/${email}`, {
+        headers: this.headers,
+      }
     );
   }
 
   verifyOTP(data: any) {
     return this.http.post<any>(
       `${this.BASE_URL}/api/jwt/verifyOTP`,
-      data
+      data, {
+        headers: this.headers,
+      }
     );
   }
 
   updatepassword(data: any) {
     return this.http.post<any>(
       `${this.BASE_URL}/api/jwt/updatePassword`,
-      data
+      data, {
+        headers: this.headers,
+      }
     );
   }
 

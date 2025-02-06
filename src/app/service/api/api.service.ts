@@ -10,11 +10,12 @@ import { User } from '../../dashboard/user.model';
   providedIn: 'root',
 })
 export class ApiService {
-  BASE_URL: string = 'http://ec2-44-203-232-64.compute-1.amazonaws.com:8080/';
+  BASE_URL: string = 'http://ec2-98-84-34-5.compute-1.amazonaws.com:8080';
 
   private headers = new HttpHeaders({
     // Authorization: `Bearer ${sessionStorage.getItem('TOKEN')}`,
     Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
+    Origin: 'https://santhoshkumarpv002.github.io/',
   });
   // dataUpdated$: any;
 
