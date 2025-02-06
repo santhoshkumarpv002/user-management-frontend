@@ -1,0 +1,103 @@
+<body class="vh-100 gradient-custom">
+  <app-header></app-header>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <section>
+            <div class="container py-5 h-100 mt-5">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                  <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                      <form>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="successShow">
+                          <small>{{successmsg}}</small>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="waitmsgshow">
+                          <small>{{waitmsg}}</small>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="msgShow">
+                          <small>{{msg}}</small>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control form-control-lg" required />
+                              <label class="form-label" for="name">Name</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control form-control-lg" required />
+                              <label class="form-label" for="email">Email</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control form-control-lg" required minlength="6" />
+                              <label class="form-label" for="password">Password</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="text" id="address" name="address" [(ngModel)]="address" class="form-control form-control-lg" required />
+                              <label class="form-label" for="address">Address</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <label for="dropdown">Gender</label>
+                            <select id="dropdown" name="gender" class="form-select" [(ngModel)]="gender" aria-label="Default select example">
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                              <option value="other">Other</option>
+                            </select>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="mb-4">
+                              <label for="role" class="form-label">Role</label>
+                              <select id="role" name="role" class="form-select" [(ngModel)]="role" required>
+                             
+                                <option value="softwareEngineer">Software Engineer</option>
+                                <option value="projectManager">Project Manager</option>
+                                <option value="designer">Designer</option>
+                                <option value="admin">Admin</option>
+                                <option value="qaEngineer">QA Engineer</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="tel" id="phone" name="phone" class="form-control form-control-lg" [(ngModel)]="phone" required pattern="[0-9]{10}" />
+                              <label class="form-label" for="phone">Phone Number</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="mt-4 pt-2 d-flex justify-content-center">
+                          <button data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" (click)="handleRegister()">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+  

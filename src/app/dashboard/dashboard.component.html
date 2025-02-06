@@ -1,0 +1,85 @@
+<app-header></app-header>
+
+<div class="container-fluid p-0 ps-3 m-0 mb-3 p-4 pt-0">
+
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table table-bordered table-horizontal table-vertical" style="border-collapse: collapse; width: 100%;">   
+                <thead> 
+                    <tr class="text-center" *ngIf="showEditWindow">
+                      
+                        <td>
+                            <!-- <input type="text" class="form-control form-control-lg" name="id" [(ngModel)]="dataForUpdate.id"
+                        placeholder="Enter ID"> -->
+                        </td>
+                        <td>
+                            <input type="text" class="form-control form-control-lg" name="name"
+                                [(ngModel)]="dataForUpdate.name" required>
+
+                        </td>
+                        <td>
+                            <input type="email" class="form-control form-control-lg" name="email"
+                                [(ngModel)]="dataForUpdate.email" placeholder="Enter Email">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control form-control-lg" name="role"
+                                [(ngModel)]="dataForUpdate.role" placeholder="Enter Role">
+
+                        </td>
+                        <td>
+                            <input type="text" class="form-control form-control-lg" name="gender"
+                                [(ngModel)]="dataForUpdate.gender" placeholder="Enter Gender">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control form-control-lg" name="address"
+                                [(ngModel)]="dataForUpdate.address" placeholder="Enter Address">
+                        </td>
+                        <td>
+
+                            <input type="text" class="form-control form-control-lg" name="phone"
+                                [(ngModel)]="dataForUpdate.phone" placeholder="Enter Phone">
+                        </td>
+                        <!-- <td>password </td> -->
+                        <td>
+                            <button class="btn btn-warning ms-1" (click)="updateUser(dataForUpdate)">Update</button>
+                        </td>
+
+                    </tr>
+                    
+
+
+
+                    <tr class="text-center">
+                        <td>id</td>
+                        <td>name</td>
+                        <td>email</td>
+                        <td>role</td>
+                        <td>gender</td>
+                        <td>address</td>
+                        <td>phone</td>
+                        <!-- <td>password </td> -->
+                        <td>Action</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users" class="text-center">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.role}}</td>
+                        <td>{{user.gender}}</td>
+                        <td>{{user.address}}</td>
+                        <td>{{user.phone}}</td>
+                        <!-- <td>{{user.password}}</td> -->
+                        <td>
+                            <button (click)="deleteUser(user.email)" class="btn btn-danger ms-1"  style="width: 80px;" >Delete</button>
+                            <button class="btn btn-primary ms-1 mt-1" style="width: 80px;" (click)="editUser(user.email)"> Edit  </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
