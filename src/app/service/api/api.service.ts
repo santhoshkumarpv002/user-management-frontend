@@ -10,7 +10,7 @@ import { User } from '../../dashboard/user.model';
   providedIn: 'root',
 })
 export class ApiService {
-  BASE_URL: string = 'http://ec2-98-84-34-5.compute-1.amazonaws.com:8080';
+  BASE_URL: string = 'https://user-management-367525621532.us-central1.run.app';
 
   private headers = new HttpHeaders({
     // Authorization: `Bearer ${sessionStorage.getItem('TOKEN')}`,
