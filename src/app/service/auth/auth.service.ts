@@ -14,7 +14,7 @@ export class AuthService {
     private headers = new HttpHeaders({
       // Authorization: `Bearer ${sessionStorage.getItem('TOKEN')}`,
       Authorization: `Bearer ${localStorage.getItem('TOKEN')}`,
-      Origin: 'https://santhoshkumarpv002.github.io/',
+      // Origin: 'https://santhoshkumarpv002.github.io/',
     });
 
     login(email: string, password: string) {
