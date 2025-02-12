@@ -7,7 +7,7 @@ import { map } from 'rxjs';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  BASE_URL: string = 'https://user-management-367525621532.us-central1.run.app';
+  BASE_URL: string = 'https://user-management-backend-367525621532.asia-south1.run.app';
 
 
   
